@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexandre Carreira Rodrigues - Portfólio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 1. Configurações Globais e Variáveis --- */
+        :root {
+            --cor-primaria-dark: #1d3557; 
+            --cor-primaria-light: #457b9d; 
+            --cor-acento: #00b4d8;         
+            --cor-fundo: #f8f9fa;         
+            --cor-fundo-card: #ffffff;     
+            /* NOVA COR: Fundo alternativo suave */
+            --cor-fundo-alternativo: #edf6f9; 
+            --cor-texto-principal: #212529; 
+            --cor-texto-secundario: #555;  
+            --cor-texto-claro: #f8f9fa;
+            --sombra-suave: 0 8px 24px rgba(0, 0, 0, 0.05);
+            --sombra-media: 0 10px 30px rgba(0, 0, 0, 0.07);
+            --border-radius-suave: 8px;
+            --border-radius-moderno: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto-secundario);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 1.5rem; 
+            overflow: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif; 
+            font-weight: 600;
+            color: var(--cor-primaria-dark);
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        
+        section {
+            padding: 6rem 0; 
+        }
+
+        /* --- ALTERAÇÃO: Fundo alternativo suave --- */
+        section:nth-child(even) {
+            background-color: var(--cor-fundo-alternativo); 
+        }
+
+        /* --- 2. Barra de Navegação (Sticky Nav) --- */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85); 
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid #eee;
+            width: 100%;
+            padding: 1.2rem 0;
+        }
+        
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .nav-logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--cor-primaria-dark);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--cor-texto-secundario);
+            position: relative;
+            padding-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--cor-acento);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--cor-acento);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+
+        /* --- 3. Header (Hero Section) --- */
+        #hero {
+            background-color: var(--cor-primaria-dark);
+            background-image: linear-gradient(rgba(49, 79, 120, 0.034), rgba(60, 84, 116, 0.062)), 
+                              url('https://media.istockphoto.com/id/181075945/pt/foto/sat%C3%A9lite-e-planeta.jpg?s=612x612&w=0&k=20&c=icJLs78pqL-eYT_XP_H3sZjIWMhExVzIA3WCDNKUSU0=');
+            
+            background-size: cover; 
+            background-position: center center; 
+            background-blend-mode: multiply; 
+
+            color: var(--cor-texto-claro);
+            height: 95vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 1.5rem;
+        }
+
+        #hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 3.5rem;
+            color: var(--cor-texto-claro);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3); 
+            display: inline-block; 
+            text-align: center; 
+        }
+
+        #hero .slogan {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--cor-acento);
+            max-width: 700px;
+            margin: 1rem 0 2.5rem 0;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.2); 
+            display: inline-block;
+            text-align: left; 
+        }
+
+        .cta-buttons .btn {
+            display: inline-block;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            padding: 0.9rem 2rem; 
+            border-radius: 50px;   
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primario {
+            background: var(--cor-acento);
+            color: var(--cor-primaria-dark);
+        }
+        .btn-primario:hover {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 180, 216, 0.3);
+        }
+
+        .btn-secundario {
+            background: transparent;
+            color: var(--cor-texto-claro);
+            border: 2px solid var(--cor-texto-claro);
+        }
+        .btn-secundario:hover {
+            background: var(--cor-texto-claro);
+            color: var(--cor-primaria-dark);
+            transform: scale(1.05) translateY(-3px);
+        }
+
+        .social-links {
+            margin-top: 2.5rem;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center; 
+        }
+        .social-links a {
+            color: var(--cor-texto-claro);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .social-links a:hover {
+            color: var(--cor-acento);
+            transform: scale(1.1);
+        }
+        .social-links svg {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+        }
+
+        /* --- 4. Seção Sobre Mim --- */
+        #sobre .sobre-conteudo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem; 
+            align-items: start;
+        }
+
+        /* --- ALTERAÇÃO: Texto justificado --- */
+        #sobre .sobre-texto p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            text-align: justify; 
+        }
+        
+        .skills-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .skills-list li {
+            font-family: 'Poppins', sans-serif;
+            background: var(--cor-acento);
+            color: var(--cor-primaria-dark);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius-suave);
+            font-size: 0.9rem;
+        }
+        
+        .sobre-skills h3 {
+            font-size: 1.5rem;
+        }
+
+
+        /* --- 5. Seção Projetos (Cards Modernos) --- */
+        .projetos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card-projeto {
+            background: var(--cor-fundo-card);
+            border: none; 
+            border-radius: var(--border-radius-moderno); 
+            box-shadow: var(--sombra-suave);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease-out;
+        }
+        
+        .card-projeto:hover {
+            transform: translateY(-8px); 
+            box-shadow: var(--sombra-media);
+        }
+
+        .card-imagem {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid #f0f0f0; 
+            height: 180px; 
+            overflow: hidden; 
+        }
+        .card-imagem img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .card-conteudo {
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .card-conteudo h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .card-conteudo .categoria {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--cor-primaria-light);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+        
+        /* --- ALTERAÇÃO: Texto justificado --- */
+        .card-conteudo p {
+            font-size: 0.95rem;
+            text-align: justify; 
+        }
+
+        .card-links {
+            background: var(--cor-fundo);
+            padding: 1rem 1.5rem;
+            border-top: 1px solid #f0f0f0;
+        }
+        
+        .card-links a {
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--cor-acento);
+            margin-right: 1rem;
+            font-size: 0.9rem;
+        }
+        .card-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- 6. Formação (Timeline Refinada) --- */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            border-left: 3px solid var(--cor-acento);
+        }
+        
+        .timeline-item {
+            padding: 1rem 2rem 1.5rem 3rem;
+            position: relative;
+            margin-left: 1rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -24.5px; 
+            top: 1.2rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--cor-acento);
+            border: 4px solid var(--cor-fundo-alternativo); /* Ajustado para fundo alternativo */
+            z-index: 1;
+        }
+         /* Ajuste específico para timeline em fundo alternativo */
+        #formacao .timeline-item::before {
+             border: 4px solid var(--cor-fundo-alternativo);
+        }
+        
+        .timeline-item:last-child {
+            padding-bottom: 0.5rem;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .timeline-item .periodo {
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--cor-primaria-light);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-item .local {
+            font-style: italic;
+            color: var(--cor-texto-secundario);
+        }
+
+        /* --- 7. Publicações --- */
+        .publicacao-item {
+            background: var(--cor-fundo-card);
+            padding: 1.5rem 2rem;
+            border-radius: var(--border-radius-suave);
+            border-left: 5px solid var(--cor-acento);
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: var(--sombra-suave);
+            transition: all 0.3s ease;
+        }
+        .publicacao-item:hover {
+            box-shadow: var(--sombra-media);
+            transform: scale(1.02);
+        }
+
+        .publicacao-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .publicacao-item .publicacao-detalhes {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--cor-primaria-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .publicacao-item .autores {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--cor-texto-secundario);
+        }
+
+        .publicacao-item h3 a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        .publicacao-item h3 a:hover {
+            color: var(--cor-acento);
+            text-decoration: underline;
+        }
+
+        /* --- 8. Cursos --- */
+        .cursos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .card-curso {
+            background: var(--cor-fundo-card); /* Mantido branco para destaque */
+            padding: 1.5rem;
+            border: 1px solid #eee;
+            border-radius: var(--border-radius-moderno);
+            box-shadow: var(--sombra-suave);
+            transition: all 0.3s ease;
+        }
+        .card-curso:hover {
+            box-shadow: var(--sombra-media);
+            transform: translateY(-5px);
+        }
+        
+        .card-curso h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .card-curso .carga {
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--cor-primaria-light);
+        }
+
+        /* --- 9. Contato --- */
+        #contato {
+            text-align: center;
+        }
+        #contato p {
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+            font-size: 1.1rem;
+        }
+        
+        .contato-info {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--cor-texto-principal);
+            margin-bottom: 0.75rem;
+        }
+        
+        #contato .social-links {
+            justify-content: center;
+            margin-top: 3rem;
+        }
+        #contato .social-links a {
+            color: var(--cor-primaria-dark);
+        }
+         #contato .social-links a:hover {
+            color: var(--cor-acento);
+        }
+        
+        /* --- 10. Footer --- */
+        footer {
+            background: var(--cor-primaria-dark);
+            color: var(--cor-texto-claro);
+            text-align: center;
+            padding: 2.5rem 1rem;
+            margin-top: 4rem;
+        }
+
+        /* --- 11. Media Query (Responsivo) --- */
+        @media (max-width: 768px) {
+            nav .nav-logo {
+                font-size: 1rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+                overflow-x: auto;
+                white-space: nowrap;
+                -ms-overflow-style: none;  
+                scrollbar-width: none;  
+            }
+            nav ul::-webkit-scrollbar {
+                display: none; 
+            }
+
+            #hero {
+                height: 90vh;
+            }
+            
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+            #hero .slogan {
+                font-size: 1.1rem;
+                text-align: center; /* No mobile, slogan centralizado fica melhor */
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 4rem 0;
+            }
+            
+            #sobre .sobre-conteudo {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+             /* Justificação pode ficar estranha em telas pequenas */
+            #sobre .sobre-texto p, 
+            .card-conteudo p {
+                 text-align: left; 
+            }
+
+            .timeline {
+                 margin-left: 1rem;
+            }
+            .timeline-item {
+                 margin-left: 0;
+            }
+            .timeline-item::before {
+                left: -11px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <a href="#hero" class="nav-logo"></a>
+            <ul>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#formacao">Trajetória</a></li>
+                <li><a href="#publicacoes">Publicações</a></li>
+                <li><a href="#cursos">Cursos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="hero">
+        <div class="container"> 
+            <h1>ALEXANDRE CARREIRA RODRIGUES</h1>
+            <p class="slogan">Geólogo | Cientista de Dados | Geotecnologia | Recursos Hídricos</p> 
+            <div class="cta-buttons">
+                <a href="#projetos" class="btn btn-primario">Ver Projetos</a>
+                <a href="curriculo.html" target="_blank" class="btn btn-secundario">Currriculum Vitae</a>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/alexandre-rodrigues-438b34248/" target="_blank" title="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="https://github.com/carreiraargeol/carreiraargeol" target="_blank" title="GitHub"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.109-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="http://lattes.cnpq.br/2728448511600730" target="_blank" title="Lattes"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3.03c-1.21.0-2.37.28-3.41.81l-1.35.68-6.9.36c-.23.01-.44.14-.54.35-.1.21-.08.46.04.65l3.8 6.13-3.8 6.13c-.12.19-.14.44-.04.65.1.21.31.34.54.35l6.9.36 1.35.68c1.04.53 2.2.81 3.41.81s2.37-.28 3.41-.81l1.35-.68 6.9-.36c.23-.01.44-.14-.54-.35.1-.21.08-.46-.04-.65l-3.8-6.13 3.8-6.13c.12.19.14.44.04.65-.1-.21-.31-.34-.54-.35l-6.9-.36-1.35-.68c-1.04-.53-2.2-.81-3.41-.81zm-1.04 3.43l1.04.52 1.04-.52c.42-.21.88-.37 1.37-.47l.21-.04 5.3-.28-2.92 4.7-2.92-4.7-.21-.04c-.49-.1-.95-.26-1.37-.47zM5.3 7.18l5.3.28.21.04c.49.1.95.26 1.37.47l-2.92 4.7-2.92-4.7-1.04-.52zM4.34 12l2.92 4.7.94-1.51.13-.21-3.99-6.42zm2.74 5.29l.94 1.51 2.92-4.7-2.92-4.7-.94 1.51-.13.21zm12.58-1.72l-3.99 6.42.13.21.94 1.51 2.92-4.7zm-2.74 1.72l-.94-1.51-2.92 4.7 2.92 4.7.94-1.51.13-.21zm-2.61 3.06l1.04-.52 1.04.52c.42.21.88.37 1.37-.47l.21.04 5.3.28-2.92-4.7-2.92 4.7-.21.04c-.49-.1-.95-.26-1.37-.47zm-4.81-1.04l1.04-.52 2.92-4.7-2.92 4.7-1.04.52z"/></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="sobre">
+            <div class="container sobre-conteudo">
+                <div class="sobre-texto">
+                    <h2>Sobre Mim</h2>
+                    <p>Formado em Geologia e Mestre em Geociências pela UFMT, com foco em sensoriamento remoto e aplicação de algoritmos de Machine Learning.</p>
+                    <p>Atualmente, sou Assessor Técnico III na Gerência de Águas Subterrâneas (GASUB) da SEMA-MT. Minhas responsabilidades incluem a análise técnica de processos de Outorga de Recursos Hídricos, Autorizações de Perfuração, análise de relatórios hidrogeológicos e o desenvolvimento de automações com Python, R e SQL.</p>
+                    <p>Anteriormente, atuei na Gerência de Fiscalização (GPFCD), onde gerenciei o banco de dados de áreas embargadas e realizei autuações remotas de desmatamento ilegal.</p>
+                    <p>Minha paixão é aplicar tecnologia de ponta para resolver problemas ambientais complexos. Paralelamente, curso o 3º semestre de Direito na UFMT e uma Especialização em Geografia e Meio Ambiente.</p>
+                </div>
+                <div class="sobre-skills">
+                    <h3>Principais Habilidades</h3>
+                    <ul class="skills-list">
+                        <li>Python</li>
+                        <li>JavaScript</li>
+                        <li>R</li>
+                        <li>SQL</li>
+                        <li>Google Earth Engine</li>
+                        <li>Machine Learning</li>
+                        <li>Sensoriamento Remoto</li>
+                        <li>GIS (ArcGIS & QGIS)</li>
+                        <li>Google Colab</li>
+                        <li>Tensorflow & Keras</li>
+                        <li>Legislação Ambiental</li>
+                        <li>Recursos Hídricos</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projetos">
+            <div class="container">
+                <h2>Projetos em Destaque</h2>
+                <div class="projetos-grid">
+
+                    <div class="card-projeto">
+                        <div class="card-imagem">
+                            <img src="calculadora.png" alt="Logo do CALPUB APP">
+                        </div>
+                        <div class="card-conteudo">
+                            <div class="categoria">Recursos Hídricos (SEMA-MT/GASUB)</div>
+                            <h3>CALPUB APP</h3>
+                            <p>Cálculo do Uso de Recursos Hídricos com estimativas populacionais para Outorga de Abastecimento Público.</p>
+                        </div>
+                        <div class="card-links">
+                            <a href="https://script.google.com/macros/s/AKfycbx2CfvuBnz5PvqbD2TZK0ShPaDLl0j4nl98KoFo9waLmSuvx6kVgEPvr_fRQnl7aL2R/exec" target="_blank">Acesse o APP</a> 
+                        </div>
+                    </div>
+
+                    <div class="card-projeto">
+                        <div class="card-imagem">
+                            <img src="argeoapp.png" alt="Logo do ARGEO APP">
+                        </div>
+                        <div class="card-conteudo">
+                            <div class="categoria">Fiscalização (SEMA-MT/GPFCD)</div>
+                            <h3>ARGEO APP</h3> 
+                            <p>Automação do cálculo de vegetação nativa das propriedades rurais de MT. Utilizada para a aplicação das infrações ambientais.</p>
+                        </div>
+                        <div class="card-links">
+                            <a href="https://carreiraargeol.users.earthengine.app/view/argeoapp" target="_blank">Acesse o APP</a> 
+                        </div>
+                    </div>
+                    
+                     <div class="card-projeto">
+                        <div class="card-imagem">
+                            <img src="embargeo.png" alt="Logo do embargeo APP">
+                        </div>
+                        <div class="card-conteudo">
+                            <div class="categoria">Fiscalização (SEMA-MT/GPFCD)</div>
+                            <h3>EMBARGEO APP</h3> 
+                            <p>Desenvolvimento de uma metodologia de detecção de descumprimento de embargos por métricas temporais espectrais no GEE.</p>
+                        </div>
+                        <div class="card-links">
+                            <a href="https://ee-carreirageol.projects.earthengine.app/view/embargeo" target="_blank">Acesse o APP</a> 
+                        </div>
+                    </div>
+
+                    <div class="card-projeto">
+                         <div class="card-conteudo">
+                            <div class="categoria">Pesquisa Acadêmica (Mestrado)</div>
+                            <h3>Machine Learning para Classificação de Desmate</h3>
+                            <p>Avaliação do desempenho de índices espectrais para a classificação de áreas de mineração utilizando o algoritmo Random Forest.</p>
+                        </div>
+                        <div class="card-links">
+                            <a href="https://drive.google.com/file/d/1Ik_ZkhGM8rjdQ7W2mMOqFfdXUy7C0Vm0/view?usp=drive_link">Ler Dissertação</a>
+                        </div>
+                    </div>
+                    
+
+<div class="card-projeto">
+     <div class="card-imagem">
+         <img src="gerenciador_1.jpg" alt="Gerenciador GASUB"> 
+     </div>
+     <div class="card-conteudo">
+         <div class="categoria">Gestão Pública (SEMA-MT/GASUB)</div>
+         <h3>Gerenciador GASUB</h3>
+         <p>Sistema web para gerenciamento e análise de processos de outorga de recursos hídricos na SEMA-MT.</p>
+     </div>
+     <div class="card-links">
+         <a href="projeto-gasub.html">Ver Detalhes</a> 
+         </div>
+ </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="formacao">
+            <div class="container">
+                <h2>Trajetória Acadêmica e Profissional</h2>
+                <div class="timeline">
+                    
+                    <div class="timeline-item">
+                        <div class="periodo">Ago 2025 - Atual</div>
+                        <h3>Assessor Técnico III (Recursos Hídricos)</h3>
+                        <div class="local">SEMA-MT (Gerência de Águas Subterrâneas - GASUB)</div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="periodo">Fev 2023 - Ago 2025 (2 anos 7 meses)</div>
+                        <h3>Estágio de Pós-Graduação (Fiscalização)</h3>
+                        <div class="local">SEMA-MT (Gerência de Fiscalização - GPFCD)</div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="periodo">2025 - Atual</div>
+                        <h3>Especialização em Geografia e Meio Ambiente</h3>
+                        <div class="local">CENES-FOCUS</div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="periodo">2024 - Atual</div>
+                        <h3>Bacharelado em Direito (3° Semestre)</h3>
+                        <div class="local">Universidade Federal de Mato Grosso (UFMT)</div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="periodo">2023 - 2025</div>
+                        <h3>Mestrado em Geociências</h3>
+                        <div class="local">Universidade Federal de Mato Grosso (UFMT)</div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="periodo">2015 - 2022</div>
+                        <h3>Graduação em Geologia</h3>
+                        <div class="local">Universidade Federal de Mato Grosso (UFMT)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="publicacoes">
+            <div class="container">
+                <h2>Publicações e Trabalhos Acadêmicos</h2>
+                
+                <div class="publicacao-item">
+                    <h3>
+                        <a href="https://www.even3.com.br/anais/xxi-selper-2024/881453-duas-decadas-de-analise-da-temperatura-media-da-superficie-da-terra-(lst)-na-regiao-metropolitana-de-cuiaba/" target="_blank">
+                            DUAS DÉCADAS DE ANÁLISE DA TEMPERATURA MÉDIA DA SUPERFÍCIE DA TERRA (LST) NA REGIÃO METROPOLITANA DE CUIABÁ.
+                        </a>
+                    </h3>
+                    <div class="publicacao-detalhes">Publicado em: 09/01/2025 | Anais do Simpósio Internacional Selper: Além do dossel – Tecnologias e Aplicações de Sensoriamento RemotoISBN: 978-65-272-0931-7</div>
+                    <div class="autores"> Autores: Alexandre Rodrigues, Tassia Thauany Bukoski, Pedro Maciel de Paula Garcia.</div>
+                </div>
+
+                <div class="publicacao-item">
+                    <h3>
+                        <a href="https://proceedings.science/sbsr-2025/trabalhos/uma-analise-espaco-temporal-das-queimadas-em-cuiaba-e-varzea-grande-entre-2021-a?lang=pt-br" target="_blank">
+                            UMA ANÁLISE ESPAÇO TEMPORAL DAS QUEIMADAS EM CUIABÁ E VÁZEA GRANDE ENTRE 2021 A 2024
+                        </a>
+                    </h3>
+                     <div class="publicacao-detalhes">Publicado em: 14/04/2025 | Anais do XXI Simpósio Brasileiro de Sensoriamento Remoto
+ISBN: 978-65-80968-29-9</div>
+                    <div class="autores">Autores: Alexandre Carreira Rodrigues, Pedro Maciel de Paula Garcia, Christiano Ribeiro dos Santos Júnior</div>
+                </div>
+                
+                <div class="publicacao-item">
+                    <h3>
+                        <a href="https://proceedings.science/sbsr-2025/trabalhos/analise-temporal-dos-casos-notificados-de-dengue-no-estado-de-mato-grosso-2020-a?lang=pt-br" target="_blank">
+                            ANÁLISE TEMPORAL DOS CASOS NOTIFICADOS DE DENGUE NO ESTADO DE MATO GROSSO ( 2020 a 2024)
+                        </a>
+                    </h3>
+                     <div class="publicacao-detalhes">Publicado em: 14/04/2025 | Anais do XXI Simpósio Brasileiro de Sensoriamento Remoto
+ISBN: 978-65-80968-29-9</div>
+                    <div class="autores">Autores: Alexandre Carreira Rodrigues, Eduardo Luis Santini, Gilvana Da Silva Oliveira, et al.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cursos">
+            <div class="container">
+                <h2>Cursos e Capacitações</h2>
+                <div class="cursos-grid">
+
+                    <div class="card-curso">
+                        <h3>Introdução ao Google Earth Engine</h3>
+                        <div class="carga">Carga Horária: 40h</div>
+                        <p>Ministrado pela Solved – Soluções em Geoinformação.</p>
+                    </div>
+
+                    <div class="card-curso">
+                        <h3>Tensorflow 2x & Keras (Deep Learning)</h3>
+                        <div class="carga">Carga Horária: 8h</div>
+                        <p>Construção de modelos de deep learning no sensoriamento remoto (ISPRS-SELPER 2024).</p>
+                    </div>
+
+                    <div class="card-curso">
+                        <h3>Geoprocessamento e Cadastro Ambiental Rural (CAR)</h3>
+                        <div class="carga">Carga Horária: 24h</div>
+                        <p>Atendimento a notificações do CAR (Serviço Florestal Brasileiro).</p>
+                    </div>
+
+                    <div class="card-curso">
+                        <h3>Atualização SIMCAR</h3>
+                        <div class="carga">Carga Horária: 22h</div>
+                        <p>Ministrado pela Escola de Meio Ambiente da SEMA.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        
+        <section id="contato">
+            <div class="container">
+                <h2>Vamos Conversar?</h2>
+                <p>Estou disponível para novas oportunidades, projetos e colaborações que unam geociências, tecnologia e legislação.</p>
+                <div class="contato-info">Email: carreira.argeol@gmail.com</div>
+                <div class="contato-info">Ligação: (65) 97400-6002</div>
+                <div class="contato-info">Whatsapp: (65) 99216-0895</div>
+                <div class="contato-info">Localização: Cuiabá - MT</div>
+                
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/alexandre-rodrigues-438b34248/" target="_blank" title="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                    <a href="https://github.com/carreiraargeol/carreiraargeol" target="_blank" title="GitHub"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.109-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="#" target="_blank" title="Lattes">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3.03c-1.21.0-2.37.28-3.41.81l-1.35.68-6.9.36c-.23.01-.44.14-.54.35-.1.21-.08.46.04.65l3.8 6.13-3.8 6.13c-.12.19-.14.44-.04.65.1.21.31.34.54.35l6.9.36 1.35.68c1.04.53 2.2.81 3.41.81s2.37-.28 3.41-.81l1.35-.68 6.9-.36c.23-.01.44-.14-.54-.35.1-.21.08-.46-.04-.65l-3.8-6.13 3.8-6.13c.12.19.14.44.04.65-.1-.21-.31-.34-.54-.35l-6.9-.36-1.35-.68c-1.04-.53-2.2-.81-3.41-.81zm-1.04 3.43l1.04.52 1.04-.52c.42-.21.88-.37 1.37-.47l.21-.04 5.3-.28-2.92 4.7-2.92-4.7-.21-.04c-.49-.1-.95-.26-1.37-.47zM5.3 7.18l5.3.28.21.04c.49.1.95.26 1.37.47l-2.92 4.7-2.92-4.7-1.04-.52zM4.34 12l2.92 4.7.94-1.51.13-.21-3.99-6.42zm2.74 5.29l.94 1.51 2.92-4.7-2.92-4.7-.94 1.51-.13.21zm12.58-1.72l-3.99 6.42.13.21.94 1.51 2.92-4.7zm-2.74 1.72l-.94-1.51-2.92 4.7 2.92 4.7.94-1.51.13-.21zm-2.61 3.06l1.04-.52 1.04.52c.42.21.88.37 1.37-.47l.21.04 5.3.28-2.92-4.7-2.92 4.7-.21.04c-.49-.1-.95-.26-1.37-.47zm-4.81-1.04l1.04-.52 2.92-4.7-2.92 4.7-1.04.52z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Alexandre Carreira Rodrigues. Desenvolvido com base no seu CV.</p>
+    </footer>
+
+</body>
+</html>

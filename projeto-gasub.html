@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Projeto - Gerenciador GASUB</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 1. ESTILOS GLOBAIS (COPIADOS DA PÁGINA PRINCIPAL) --- */
+        :root {
+            --cor-primaria-dark: #1d3557; 
+            --cor-primaria-light: #457b9d; 
+            --cor-acento: #00b4d8;         
+            --cor-fundo: #f8f9fa;         
+            --cor-fundo-card: #ffffff;     
+            --cor-fundo-alternativo: #edf6f9; 
+            --cor-texto-principal: #212529; 
+            --cor-texto-secundario: #555;  
+            --cor-texto-claro: #f8f9fa;
+            --sombra-suave: 0 8px 24px rgba(0, 0, 0, 0.05);
+            --sombra-media: 0 10px 30px rgba(0, 0, 0, 0.07);
+            --border-radius-suave: 8px;
+            --border-radius-moderno: 12px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--cor-fundo); color: var(--cor-texto-secundario); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 1100px; margin: auto; padding: 0 1.5rem; overflow: hidden; }
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; font-weight: 600; color: var(--cor-primaria-dark); margin-bottom: 1rem; }
+        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 3.5rem; }
+        section { padding: 4rem 0; /* Menos padding vertical que na home */ } 
+        section:nth-child(even) { background-color: var(--cor-fundo-alternativo); }
+        img { max-width: 100%; height: auto; display: block; } /* Imagens responsivas */
+
+        /* --- 2. ESTILOS ESPECÍFICOS DA PÁGINA DE PROJETO --- */
+
+        /* Cabeçalho simples para a página do projeto */
+        .project-header {
+            background-color: var(--cor-primaria-dark);
+            color: var(--cor-texto-claro);
+            padding: 4rem 0 2rem 0;
+            text-align: center;
+        }
+        .project-header h1 {
+            color: var(--cor-texto-claro);
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .project-header .subtitle {
+            font-size: 1.2rem;
+            color: var(--cor-acento);
+            margin-bottom: 2rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+        }
+
+        /* Botão Voltar */
+        .back-button {
+             display: inline-block;
+             text-decoration: none;
+             font-family: 'Poppins', sans-serif;
+             font-weight: 600;
+             padding: 0.7rem 1.5rem;
+             border-radius: 50px;
+             margin-top: 1rem; /* Espaço acima */
+             margin-bottom: 2rem; /* Espaço abaixo antes do conteúdo */
+             transition: all 0.3s ease;
+             background: transparent;
+             color: var(--cor-texto-claro);
+             border: 2px solid var(--cor-texto-claro);
+             font-size: 0.9rem;
+        }
+        .back-button:hover {
+            background: var(--cor-texto-claro);
+            color: var(--cor-primaria-dark);
+        }
+
+        /* Seção de Introdução */
+        .intro-section p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 1.5rem auto;
+            text-align: center;
+        }
+
+        /* Seções de Funcionalidades (layout alternado) */
+        .feature-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 4rem; /* Espaço entre features */
+        }
+        
+        /* Alternar imagem/texto esquerda/direita */
+        section:nth-child(odd) .feature-section {
+            grid-template-areas: "image text";
+        }
+         section:nth-child(even) .feature-section {
+             grid-template-areas: "text image";
+        }
+        
+        .feature-image { grid-area: image; }
+        .feature-text { grid-area: text; }
+
+        .feature-image img {
+            border-radius: var(--border-radius-moderno);
+            box-shadow: var(--sombra-media);
+        }
+        
+        .feature-text h3 {
+            font-size: 1.8rem;
+            color: var(--cor-primaria-light);
+            margin-bottom: 1rem;
+        }
+        .feature-text p {
+            font-size: 1.05rem;
+            text-align: justify; /* Justificar texto das features */
+            margin-bottom: 1rem;
+        }
+         .feature-text ul {
+            list-style: disc;
+            margin-left: 1.5rem;
+            font-size: 1.05rem;
+        }
+        .feature-text li {
+            margin-bottom: 0.5rem;
+        }
+
+
+        /* Rodapé simples */
+         footer {
+            background: var(--cor-primaria-dark);
+            color: var(--cor-texto-claro);
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 2rem;
+        }
+
+        /* --- 3. RESPONSIVIDADE PARA PÁGINA DE PROJETO --- */
+         @media (max-width: 768px) {
+            .project-header h1 { font-size: 2.2rem; }
+            .project-header .subtitle { font-size: 1rem; }
+            
+             /* Coluna única para features em telas menores */
+            .feature-section {
+                grid-template-columns: 1fr;
+                 /* Força ordem texto -> imagem no mobile */
+                grid-template-areas: 
+                    "text"
+                    "image"; 
+                gap: 2rem;
+                text-align: center; /* Centraliza texto no mobile */
+            }
+             .feature-text h3 { text-align: center; }
+             .feature-text p, .feature-text ul { 
+                 text-align: left; /* Mantém parágrafos e listas alinhados à esquerda */
+             }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="project-header">
+        <div class="container">
+            <h1>Gerenciador GASUB</h1>
+            <p class="subtitle">Sistema de Gerenciamento de Processos de Recursos Hídricos - SEMA/MT</p>
+             <a href="index.html" class="back-button">&larr; Voltar ao Portfólio</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="intro">
+            <div class="container intro-section">
+                 <h2>O Desafio</h2>
+                 <p>Gerenciar o fluxo de processos de outorga, perfuração e cadastros de recursos hídricos na Gerência de Águas Subterrâneas (GASUB) da SEMA-MT demandava uma ferramenta centralizada para otimizar a análise, acompanhamento de prazos e visualização espacial das demandas.</p>
+                 <h2>A Solução</h2>
+                 <p>Desenvolvi o Gerenciador GASUB, um sistema web completo que oferece portais dedicados para analistas e equipes de monitoramento, facilitando o controle e a gestão eficiente de todos os processos relacionados a águas subterrâneas.</p>
+            </div>
+        </section>
+
+        <section id="feature-login">
+            <div class="container">
+                 <div class="feature-section">
+                     <div class="feature-image">
+                         <img src="gerenciador_1.jpg" alt="Tela inicial do Gerenciador GASUB">
+                         <img src="inicializar_1.jpg" alt="Tela de login do Portal de Análise" style="margin-top: 1rem;">
+                     </div>
+                     <div class="feature-text">
+                         <h3>Acesso Centralizado e Seguro</h3>
+                         <p>O sistema apresenta uma tela inicial intuitiva que direciona o usuário para o módulo apropriado:</p>
+                         <ul>
+                             <li><strong>Análise de Processos:</strong> Dedicado aos analistas responsáveis pela avaliação técnica de outorgas, perfurações e cadastros.</li>
+                             <li><strong>Monitoramento:</strong> Focado na equipe de acompanhamento e conformidade das outorgas emitidas.</li>
+                         </ul>
+                         <p>Cada portal possui acesso restrito via login e senha, garantindo a segurança e a rastreabilidade das ações realizadas no sistema.</p>
+                     </div>
+                 </div>
+            </div>
+        </section>
+
+        <section id="feature-painel">
+            <div class="container">
+                 <div class="feature-section">
+                    <div class="feature-image">
+                        <img src="processos_1.jpg" alt="Painel de Controle GASUB - Tarefas Pendentes">
+                    </div>
+                    <div class="feature-text">
+                        <h3>Painel de Controle do Analista</h3>
+                        <p>O coração do módulo de análise, o Painel de Controle, oferece uma visão clara e organizada das demandas:</p>
+                        <ul>
+                            <li><strong>Adicionar Tarefa:</strong> Registro rápido de novos processos recebidos, vinculando número e data.</li>
+                            <li><strong>Minhas Tarefas Pendentes:</strong> Listagem dos processos sob responsabilidade do analista, com data de recebimento, prazo restante calculado automaticamente e ações diretas (Iniciar Análise, Excluir).</li>
+                            <li><strong>Processos com Pendência Externa:</strong> Acompanhamento de processos que dependem de manifestação de outros órgãos, exibindo interessado, órgão externo, prazo (se aplicável) e status atual.</li>
+                            <li><strong>Navegação Rápida:</strong> Acesso direto às funcionalidades de Visualização no Mapa e Dashboard de Produtividade.</li>
+                        </ul>
+                    </div>
+                 </div>
+            </div>
+        </section>
+        
+        <section id="feature-mapa">
+            <div class="container">
+                 <div class="feature-section">
+                     <div class="feature-image">
+                         <img src="mapa_1.jpg" alt="Mapa de Processos GASUB">
+                     </div>
+                     <div class="feature-text">
+                         <h3>Visualização Geográfica Inteligente</h3>
+                         <p>A ferramenta "Meus Processos no Mapa" integra a gestão de processos com a análise espacial:</p>
+                         <ul>
+                             <li><strong>Localização Visual:</strong> Exibe a localização geográfica dos processos analisados ou pendentes.</li>
+                             <li><strong>Busca por Processo:</strong> Permite localizar rapidamente um processo específico no mapa.</li>
+                             <li><strong>Controle de Camadas:</strong> Oferece opções para alternar o mapa base (Padrão/Satélite) e sobrepor camadas geoespaciais relevantes (Terras Indígenas, Unidades de Conservação), auxiliando na análise contextual.</li>
+                             <li><strong>Filtragem de Status:</strong> Possibilita visualizar apenas processos pendentes ou com parecer emitido.</li>
+                         </ul>
+                     </div>
+                 </div>
+            </div>
+        </section>
+
+        <section id="feature-dashboard">
+            <div class="container">
+                <div class="feature-section">
+                     <div class="feature-image">
+                         <img src="dashboard_1.jpg" alt="Dashboard de Produtividade GASUB">
+                     </div>
+                     <div class="feature-text">
+                         <h3>Dashboard de Produtividade</h3>
+                         <p>O módulo de Produtividade transforma os dados do sistema em insights gerenciais:</p>
+                         <ul>
+                             <li><strong>Filtros Flexíveis:</strong> Permite analisar a performance por Período, Objeto (tipo de processo) e Status.</li>
+                             <li><strong>Indicadores Chave:</strong> Apresenta rapidamente o Total Analisado, Processos Com Pendência e Pareceres Emitidos no período selecionado.</li>
+                             <li><strong>Análise Temporal:</strong> Gráfico de barras mostrando a evolução do número de processos analisados mês a mês.</li>
+                             <li><strong>Distribuição Geográfica:</strong> Gráfico de pizza (donut chart) exibindo os 5 municípios com maior número de processos analisados, facilitando a identificação de áreas com maior demanda.</li>
+                         </ul>
+                     </div>
+                 </div>
+            </div>
+        </section>
+        
+        </main>
+
+    <footer>
+        <p>© 2025 Alexandre Carreira Rodrigues.</p>
+    </footer>
+
+</body>
+</html>

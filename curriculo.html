@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo - Alexandre Carreira Rodrigues</title>
+    <style>
+        /* Estilos compactos (fonte pequena, margens reduzidas) */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.3; 
+            font-size: 9.5pt; /* Fonte base pequena */
+        }
+        .download-container {
+            text-align: center;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+        #download-pdf {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #download-pdf:hover {
+            background-color: #218838;
+        }
+        .wrapper {
+            max-width: 900px;
+            margin: 0 auto 20px auto;
+            background-color: #ffffff;
+            display: flex;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .sidebar {
+            width: 33%;
+            background-color: #3B7A57;
+            color: #ffffff;
+            padding: 20px; 
+            box-sizing: border-box;
+        }
+        .sidebar h1 {
+            font-size: 1.9em; 
+            line-height: 1.2;
+            margin: 0 0 10px 0; 
+            font-weight: 600;
+        }
+        .sidebar h2 {
+            font-size: 1.15em; 
+            border-bottom: 2px solid #5a9a7a;
+            padding-bottom: 4px; 
+            margin-top: 15px; 
+            margin-bottom: 8px; 
+            font-weight: 600;
+        }
+        .contact-info {
+            list-style-type: none;
+            padding: 0;
+            font-size: 0.95em; 
+        }
+        .contact-info li {
+            margin-bottom: 6px; 
+            word-wrap: break-word;
+        }
+        .contact-info strong {
+            display: block;
+            margin-bottom: 1px; 
+            font-weight: 600;
+        }
+        .skills-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .skills-list li {
+            background-color: #5a9a7a;
+            border-radius: 4px;
+            padding: 5px 8px; 
+            font-size: 0.9em; 
+            margin-bottom: 5px; 
+            font-weight: 500;
+        }
+        .skills-list .expertise {
+            background-color: #ffffff;
+            color: #3B7A57;
+            font-weight: 700;
+            font-size: 0.95em; 
+        }
+        .main-content {
+            width: 67%;
+            padding: 20px; 
+            box-sizing: border-box;
+        }
+        .section {
+            margin-bottom: 12px; 
+        }
+        .section h2 {
+            font-size: 1.3em; 
+            color: #3B7A57;
+            border-bottom: 2px solid #f0f2f5;
+            padding-bottom: 5px; 
+            margin: 0 0 8px 0; 
+            font-weight: 600;
+        }
+        .section > p {
+            text-align: justify;
+            margin-top: 0;
+            margin-bottom: 8px; 
+        }
+        .item {
+            margin-bottom: 10px; 
+        }
+        .item h3 {
+            font-size: 1.05em; 
+            margin: 0 0 1px 0; 
+            color: #000;
+            font-weight: 600;
+        }
+        .item h4 {
+            font-size: 0.95em; 
+            margin: 0 0 4px 0; 
+            color: #555;
+            font-weight: 500;
+            font-style: italic;
+        }
+        .item ul {
+            padding-left: 20px;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        .item li, .item p {
+            font-size: 0.95em; 
+            text-align: justify;
+        }
+        .item li {
+             margin-bottom: 2px; 
+        }
+        .item p {
+            margin-top: 4px;
+            margin-bottom: 4px;
+        }
+        .condensed-list {
+            list-style-type: disc;
+            padding-left: 20px;
+            font-size: 0.95em; 
+            margin: 0;
+        }
+        .condensed-list li {
+            margin-bottom: 3px; 
+        }
+        @media print {
+            .download-container {
+                display: none;
+            }
+        }
+        @media (max-width: 800px) {
+            .wrapper {
+                flex-direction: column;
+            }
+            .sidebar, .main-content {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="download-container">
+        <button id="download-pdf">Baixar Currículo PDF </button>
+    </div>
+
+    <div class="wrapper" id="curriculo-para-pdf">
+        
+        <aside class="sidebar">
+            <h1>ALEXANDRE CARREIRA RODRIGUES</h1>
+            
+            <section>
+                <h2>Contato</h2>
+                <ul class="contact-info">
+                    <li><strong>Telefone:</strong> 65-97400-6002</li>
+                    <li><strong>Email:</strong> carreira.argeol@gmail.com</li>
+                    <li><strong>Residência:</strong> Cuiabá - MT (Morada do Ouro)</li>
+                    <li><strong>Habilitação:</strong> AB</li>
+          
+                </ul>
+            </section>
+
+            <section>
+                <h2>Habilidades</h2>
+                <ul class="skills-list">
+                    <li class="expertise">Programação e Geociências</li>
+                    <li>Linguagens: JavaScript, Python, HTML e R</li>
+                    <li>Google Earth Engine</li>
+                    <li>Sensoriamento Remoto</li>
+              
+                </ul>
+            </section>
+        </aside>
+
+        <main class="main-content">
+            
+            <section class="section">
+                <h2>Perfil Profissional</h2>
+                <p>
+                    Geólogo (UFMT, 2022), Mestre em Geociências (UFMT, 2025) e estudante de Direito (UFMT). Atualmente Assessor Técnico na GASUB da SEMA-MT.
+            <section class="section">
+                <h2>Experiência Profissional</h2>
+                
+                <article class="item">
+                    <h3>Assessor Técnico lll</h3>
+                    <h4>Setor: Gerência de Água Subterrânea (GASUB- CCRH - SEMA/MT) | (Ago/2025 - Atual)</h4>
+                    <ul>
+                        <li>Análise técnica de processos de outorga, autorização de perfuração e cadastro de uso insignificante (água).</li>
+                        <li>Análises espaciais (GIS/SR) p/ avaliação de captações e sobreposição com áreas de restrição.</li>
+                        <li>Análise de relatórios hidrogeológicos, ensaios de bombeamento e testes de vazão.</li>
+                    </ul>
+                </article>
+                
+                <article class="item">
+                    <h3>Analista Técnico (Geoprocessamento)</h3>
+                    <h4>Gerência de Planejamento, Fiscalização e Combate ao Desmatamento (GPFCD - SEMA MT) | (2023 - Ago/2025)</h4>
+                    <ul>
+                        <li>Gestão do banco de dados de áreas embargadas/desembargadas da SEMA.</li>
+                        <li>Autuação remota (auto de infração/embargo) de desmatamento ilegal.</li>
+                        <li>Planejamento de operações de fiscalização in loco (SEMA, BPMA, DUDS-SEMA).</li>
+                        <li>Programação (JS, Python, R) e análise de dados espaciais (desmate, degradação, queimadas).</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section class="section">
+                <h2>Formação Acadêmica</h2>
+                
+                <article class="item">
+                    <h3>Especialização em Geografia e Meio Ambiente (Lato Sensu)</h3>
+                    <h4>CENES-FOCUS (2025 - Atual)</h4>
+                </article>
+                
+                <article class="item">
+                    <h3>Graduação em Direito (Cursando 3º Semestre)</h3>
+                    <h4>Universidade Federal de Mato Grosso (UFMT) - Período Noturno</h4>
+                </article>
+
+                <article class="item">
+                    <h3>Mestrado em Geociências</h3>
+                    <h4>Universidade Federal de Mato Grosso (UFMT) (2023 - 2025)</h4>
+                    <p><strong>Projeto:</strong> Machine Learning (Random Forest) para classificar desmatamento na Amazônia. (Em andamento)</p>
+                </article>
+                
+                <article class="item">
+                    <h3>Graduação em Geologia</h3>
+                    <h4>Universidade Federal de Mato Grosso (UFMT) (2015 - 2022)</h4>
+                    <p><strong>Monografia:</strong> Reflexão Geoética sobre diamante e ouro em terras indígenas (Cinta Larga e Munduruku).</p>
+                </article>
+            </section>
+
+            <section class="section">
+                <h2>Cursos e Capacitações</h2>
+                <ul class="condensed-list">
+                    <li>Introdução ao Google Earth Engine (40h) - Solved/SEMA-MT</li>
+                    <li>Atualização SIMCAR (22h) - Escola de Meio Ambiente da SEMA</li>
+                    <li>Tensorflow 2x & Keras p/ deep learning em SR (8h) - ISPRS-SELPER 2024</li>
+                    <li>Geoprocessamento - Notificações do CAR (24h) - Serv. Florestal Brasileiro</li>
+                    <li>Geologia, Minérios e Geotecnologias Aplicadas (20h + 20h) - Imazon Cursos</li>
+                    <li>Congressos e Simpósios: Forest Fire (30h), SBSR (30H), ISPRS-SELPER (34h)</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2>Trabalhos Acadêmicos</h2>
+                <ul class="condensed-list">
+                    <li>Análise Espaço-Temporal de Queimadas em Cuiabá e Várzea Grande (2021-2024)</li>
+                    <li>Análise Temporal de Casos Notificados de Dengue em MT (2020-2024)</li>
+                     <li>Duas Décadas de Análise da Temperatura Média da Superfície da Terra (LST) Na Região Metropolitana de Cuiabá.</li>
+                </ul>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script>
+        document.getElementById('download-pdf').addEventListener('click', function() {
+            var element = document.getElementById('curriculo-para-pdf'); 
+            
+            var opt = {
+              margin:       [0.4, 0.4, 0.4, 0.4], 
+              filename:     'Curriculo_Alexandre_Rodrigues.pdf',
+              image:        { type: 'jpeg', quality: 0.98 },
+              html2canvas:  { scale: 2, useCORS: true },
+              jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+            
+            html2pdf().set(opt).from(element).save();
+        });
+    </script>
+
+</body>
+</html>
