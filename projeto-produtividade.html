@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto - Gerenciador de Produtividade</title> 
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 1. Configurações Globais e Variáveis --- */
+        :root {
+            --cor-primaria-dark: #1d3557; 
+            --cor-primaria-light: #457b9d; 
+            --cor-acento: #00b4d8;         
+            --cor-fundo: #f8f9fa;         
+            --cor-fundo-card: #ffffff;    
+            --cor-fundo-alternativo: #edf6f9; 
+            --cor-texto-principal: #212529; 
+            --cor-texto-secundario: #555;  
+            --cor-texto-claro: #f8f9fa;
+            --sombra-suave: 0 8px 24px rgba(0, 0, 0, 0.05);
+            --sombra-media: 0 10px 30px rgba(0, 0, 0, 0.07);
+            --border-radius-suave: 8px;
+            --border-radius-moderno: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto-secundario);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 1.5rem; 
+            overflow: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif; 
+            font-weight: 600;
+            color: var(--cor-primaria-dark);
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        
+        section {
+            padding: 6rem 0; 
+        }
+
+        section:nth-child(even) {
+            background-color: var(--cor-fundo-alternativo); 
+        }
+
+        /* --- 2. Barra de Navegação (Sticky Nav) --- */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85); 
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid #eee;
+            width: 100%;
+            padding: 1.2rem 0;
+        }
+        
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .nav-logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--cor-primaria-dark);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--cor-texto-secundario);
+            position: relative;
+            padding-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--cor-acento);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--cor-acento);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* --- ESTILOS DA PÁGINA DE PROJETO (REUTILIZADOS E NOVOS) --- */
+        #projeto-detalhe {
+            padding-top: 4rem; /* Menos padding no topo */
+        }
+        
+        #projeto-detalhe h2 {
+            text-align: left; /* Alinhar título à esquerda */
+            margin-bottom: 1.5rem;
+        }
+
+        #projeto-detalhe p {
+            font-size: 1.1rem;
+            max-width: 900px;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .skills-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+            margin-bottom: 2.5rem; /* Espaço extra */
+        }
+
+        .skills-list li {
+            font-family: 'Poppins', sans-serif;
+            background: var(--cor-acento);
+            color: var(--cor-primaria-dark);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius-suave);
+            font-size: 0.9rem;
+        }
+
+        /* --- NOVOS ESTILOS PARA O GRID DE IMAGENS --- */
+        .projeto-imagens-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+        .imagem-item {
+            text-align: center;
+            background: var(--cor-fundo-card);
+            border-radius: var(--border-radius-moderno);
+            box-shadow: var(--sombra-suave);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .imagem-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra-media);
+        }
+        .imagem-item img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+        .imagem-item p {
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            color: var(--cor-texto-principal);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        /* --- Footer (copiado) --- */
+        footer {
+            background: var(--cor-primaria-dark);
+            color: var(--cor-texto-claro);
+            text-align: center;
+            padding: 2.5rem 1rem;
+            margin-top: 4rem;
+        }
+
+        /* --- 11. Media Query (Responsivo) --- */
+        @media (max-width: 768px) {
+            nav .nav-logo {
+                font-size: 1rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+                overflow-x: auto;
+                white-space: nowrap;
+                -ms-overflow-style: none;  
+                scrollbar-width: none;  
+            }
+            nav ul::-webkit-scrollbar {
+                display: none; 
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 4rem 0;
+            }
+            
+            #projeto-detalhe p {
+                text-align: left;
+            }
+
+            /* --- Ajuste do grid de imagens no mobile --- */
+            .projeto-imagens-grid {
+                grid-template-columns: 1fr; /* 1 coluna */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <a href="index.html" class="nav-logo">ALEXANDRE C. RODRIGUES</a>
+            <ul>
+                <li><a href="index.html#sobre">Sobre</a></li>
+                <li><a href="index.html#projetos">Projetos</a></li>
+                <li><a href="index.html#formacao">Trajetória</a></li>
+                <li><a href="index.html#publicacoes">Publicações</a></li>
+                <li><a href="index.html#cursos">Cursos</a></li>
+                <li><a href="index.html#contato">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="projeto-detalhe">
+            <div class="container">
+                <h2>Projeto: Gerenciador de Produtividade</h2>
+                
+                <p>
+                    Este projeto foi desenvolvido para solucionar a necessidade de um acompanhamento de produtividade mais dinâmico, transparente e motivador dentro do setor. Utilizando o Google Apps Script, criei uma aplicação web completa que funciona como um sistema de "gamificação", onde os servidores podem lançar suas atividades diárias e acompanhar seu desempenho.
+                </p>
+                <p>
+                    A aplicação é integrada a uma Planilha Google, que atua como banco de dados para armazenar os lançamentos, os cadastros de servidores e as pontuações de cada atividade. O frontend foi construído com HTML e CSS, e todo o backend (servidor web, comunicação com a planilha, lógica de negócios) é gerenciado pelo JavaScript do lado do servidor do Google Apps Script.
+                </p>
+
+                <h3>Tecnologias Utilizadas</h3>
+                <ul class="skills-list">
+                    <li>Google Apps Script</li>
+                    <li>JavaScript (ES6+)</li>
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>Planilhas Google (API)</li>
+                    <li>Google Charts API</li>
+                </ul>
+
+                <h3>Principais Funcionalidades</h3>
+
+                <div class="projeto-imagens-grid">
+                    
+                    <div class="imagem-item">
+                        <img src="acesso_1.jpg" alt="Tela de Acesso">
+                        <p><strong>Acesso ao Sistema:</strong> Tela de autenticação individual para cada servidor, criada com mecanismo de segurança algorítmo SHA256</p>
+                    </div>
+
+                    <div class="imagem-item">
+                        <img src="lançamento_1.jpg" alt="Lançamento de Produtividade">
+                        <p><strong>Lançamento de Atividades:</strong> Formulário simples e intuitivo para o registro diário.</p>
+                    </div>
+                    
+                    <div class="imagem-item">
+                        <img src="produtividade_1.jpg" alt="Dashboard Individual">
+                        <p><strong>Dashboard Individual:</strong> Gráfico de evolução da produtividade diária para auto-avaliação.</p>
+                    </div>
+
+                    <div class="imagem-item">
+                        <img src="rankin_1.jpg" alt="Dashboard Geral de Produtividade">
+                        <p><strong>Dashboard Geral (Gamificação):</strong> Ranking "Top 10" que possibilita um acompanhamento da produtividade dos servidores.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Alexandre Carreira Rodrigues. Desenvolvido com base no seu CV.</p>
+    </footer>
+
+</body>
+</html>
